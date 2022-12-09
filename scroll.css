@@ -3,6 +3,10 @@ body {
   margin: 0;
 }
 
+/* 
+ * set to a very very large value to ensure
+ * that the page can be scroll very far
+ */
 body.loaded {
   height: 5000px;
 }
@@ -26,4 +30,24 @@ canvas.scrollAnimation {
   color: white;
   position: sticky;
   font-size: 50px;
+}
+.section-remaster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#remaster {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 1500px;
+  min-width: 700px;
+  position: fixed;
+  margin: auto;
+  font-weight: bold;
+  color: white;
+  font-size: 4rem;
+  z-index: 100;
+  opacity: 0;
 }

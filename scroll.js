@@ -20,7 +20,6 @@ const getFrameImgUrl = (index) =>
 const loader = new PxLoader();
 const imgs = [];
 
-
 function preloadAllFrameImgs() {
   for (let i = 0; i <= frameCount; i++) {
     imgs[i] = loader.addImage(getFrameImgUrl(i));
@@ -67,19 +66,40 @@ function resizeCanvas() {
   canvas.height = window.innerHeight;
   canvas.width = window.innerWidth;
   drawImgWhoFillsCanvas(canvas, imgs[currentFrameIdx]);
-
 }
+
+let lastScrollTop = html.scrollTop;
 
 window.addEventListener("scroll", (e) => {
   console.log(e);
 
   // how far the user has scrolled
   const scrollTop = html.scrollTop;
-  const scrollHeight = html.scrollHeight;
-  const clientHeight = html.clientHeight;
-  let scrolled = scrollTop / (scrollHeight - clientHeight);
+
+  let scrolled = scrollTop / (html.scrollHeight - html.clientHeight);
 
   let targetFrameIdx = Math.ceil(scrolled * frameCount);
+  let opacity = scrolled;
 
-  changeFrameTo(targetFrameIdx);
+  // scroll down
+  if (scrollTop > lastScrollTop) {
+    if (targetFrameIdx >= frameCount) {
+      document.getElementById("sticky-block").style.position = "relative";
+      document.getElementById("remaster").style.opacity = 0;
+    } else {
+      document.getElementById("remaster").style.opacity = opacity;
+      changeFrameTo(targetFrameIdx);
+    }
+  }
+  // scroll up
+  else {
+    if (targetFrameIdx <= 0) {
+      document.getElementById("sticky-block").style.position = "relative";
+      document.getElementById("remaster").style.opacity = 0;
+    }
+    else {
+      document.getElementById("remaster").style.opacity = opacity;
+      changeFrameTo(targetFrameIdx);
+    }
+  }
 });
