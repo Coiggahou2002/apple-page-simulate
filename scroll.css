@@ -1,0 +1,29 @@
+body {
+  background-color: black;
+  margin: 0;
+}
+
+body.loaded {
+  height: 5000px;
+}
+
+#sticky-block {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas.scrollAnimation {
+  position: relative;
+  margin-top: -100px;
+}
+
+#copyExample {
+  color: white;
+  position: sticky;
+  font-size: 50px;
+}
