@@ -7,18 +7,28 @@ body {
  * set to a very very large value to ensure
  * that the page can be scroll very far
  */
+
 body.loaded {
   height: 5000px;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
 #sticky-block {
   height: 100vh;
-  position: sticky;
+  width: 100vw;
+  /* position: sticky; */
+  position: fixed;
   top: 0;
-  display: flex;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* overflow: hidden; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.hide {
+  visibility: hidden;
 }
 
 canvas.scrollAnimation {
@@ -26,9 +36,15 @@ canvas.scrollAnimation {
   margin-top: -100px;
 }
 
+.whitespce {
+  background-color: white;
+  height: 400px;
+}
+
 #copyExample {
   color: white;
   position: sticky;
+  top: 0;
   font-size: 50px;
 }
 .section-remaster {
